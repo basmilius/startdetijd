@@ -1,0 +1,60 @@
+@use "../../css/api" as *;
+
+@keyframes separator {
+    to {
+        opacity: .5;
+    }
+}
+
+.digits {
+    position: relative;
+    display: flex;
+    align-items: center;
+    letter-spacing: 18px;
+}
+
+.digitsSeparator {
+    display: block;
+    color: var(--text-prominent);
+    font-size: 5vw;
+    animation: separator alternate 1s var(--decelerationCurve) infinite;
+
+    &::before {
+        content: ":";
+    }
+}
+
+.digit {
+    display: block;
+    color: var(--text);
+    font-size: 8vw;
+    font-weight: 700;
+    line-height: 1;
+
+    @supports (-webkit-text-stroke: .02em var(--text)) {
+        color: transparent;
+        -webkit-text-stroke: .02em var(--text);
+    }
+}
+
+.digitContainer {
+    position: relative;
+    display: flex;
+    margin-bottom: -2vw;
+    align-items: center;
+    flex-flow: column;
+    justify-content: flex-start;
+    gap: 1vw;
+}
+
+.digitDescription {
+    color: var(--button);
+    font-size: .75vw;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.digitMount {
+    position: relative;
+    display: flex;
+}
