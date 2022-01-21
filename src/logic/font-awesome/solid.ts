@@ -1,4 +1,7 @@
 export {
+    faCircleLeft,
+    faCircleRight,
+    faCirclePlay,
     faClock,
     faPause,
     faPlay,

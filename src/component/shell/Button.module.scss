@@ -54,8 +54,11 @@
 
 @include responsive-down(md) {
     .button {
-        height: 60px;
         font-size: 16px;
+    }
+
+    .buttonGroup {
+        bottom: 15vw;
     }
 
     .buttonIcon {

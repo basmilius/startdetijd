@@ -35,16 +35,16 @@
     line-height: 1;
     text-align: center;
 
-    @supports (-webkit-text-stroke: .02em var(--text)) {
+    @supports (-webkit-text-stroke: .015em var(--text)) {
         color: transparent;
-        -webkit-text-stroke: .02em var(--text);
+        -webkit-text-stroke: .015em var(--text);
     }
 }
 
 .digitContainer {
     position: relative;
     display: flex;
-    margin-bottom: -2vw;
+    margin-bottom: -1vw;
     align-items: center;
     flex-flow: column;
     justify-content: flex-start;
@@ -54,13 +54,26 @@
 .digitDescription {
     color: var(--button);
     font-size: .75vw;
-    letter-spacing: 3px;
+    letter-spacing: .2em;
     text-transform: uppercase;
 }
 
 .digitMount {
     position: relative;
     display: flex;
+}
+
+@include responsive-down(lg) {
+    .digit {
+        @supports (-webkit-text-stroke: .02em var(--text)) {
+            color: transparent;
+            -webkit-text-stroke: .02em var(--text);
+        }
+    }
+
+    .digitDescription {
+        font-size: 1vw;
+    }
 }
 
 @include responsive-down(md) {
@@ -72,6 +85,11 @@
 
     .digit {
         font-size: 20vw;
+
+        @supports (-webkit-text-stroke: .03em var(--text)) {
+            color: transparent;
+            -webkit-text-stroke: .03em var(--text);
+        }
     }
 
     .digitDescription {

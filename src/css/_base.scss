@@ -1,11 +1,11 @@
 @use "api" as *;
 
 body {
-    --background: #072227;
-    --button: #35858b;
-    --text: #4fbdba;
-    --text-prominent: #aefeff;
-    --text-prominent-soft: rgb(174 254 255 / .5);
+    --background: hsl(189 70% 9%);
+    --button: hsl(184 45% 38%);
+    --text: hsl(178 45% 53%);
+    --text-prominent: hsl(181 100% 84%);
+    --text-prominent-soft: hsl(181 100% 84% / .5);
 
     background: var(--background);
     color: var(--text);
