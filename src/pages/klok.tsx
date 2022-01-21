@@ -7,17 +7,17 @@ function getSecondsSinceMidnight(): number {
     let today = new Date();
     let now = new Date();
 
-    now.setHours(0);
-    now.setMinutes(0);
-    now.setSeconds(0);
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
 
-    return Math.floor((today.getTime() - now.getTime()) / 1000);
+    return Math.floor((now.getTime() - today.getTime()) / 1000);
 }
 
 export default memo(() => {
     const frameRef = useRef<number>();
     const {replace: navigate} = useRouter();
-    const [interval, setInterval] = useState(0);
+    const [interval, setInterval] = useState(getSecondsSinceMidnight());
 
     useEffect(() => {
         const tick = () => {
@@ -36,7 +36,7 @@ export default memo(() => {
             <SDTTimer interval={interval}/>
 
             <SDTButtonGroup>
-                <SDTButton icon="fas circle-left" label="Terug" onClick={() => navigate("/")}/>
+                <SDTButton icon="fas stopwatch" label="Stopwatch" onClick={() => navigate("/")}/>
             </SDTButtonGroup>
         </SDTContainer>
     );

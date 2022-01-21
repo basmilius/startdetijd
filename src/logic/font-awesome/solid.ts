@@ -6,5 +6,6 @@ export {
     faPause,
     faPlay,
     faRotateLeft,
-    faStop
+    faStop,
+    faStopwatch
 } from "@fortawesome/free-solid-svg-icons";

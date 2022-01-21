@@ -58,6 +58,7 @@ export default memo(() => {
     const onPauseClick = useCallback(() => {
         pauseSince.current = getCurrentTime();
         setRunning(false);
+        cancelAnimationFrame(frameRef.current);
     }, []);
 
     const onResetClick = useCallback(() => {
@@ -65,6 +66,7 @@ export default memo(() => {
         start.current = -1;
         setInterval(0);
         setRunning(false);
+        cancelAnimationFrame(frameRef.current);
     }, []);
 
     return (
@@ -72,13 +74,13 @@ export default memo(() => {
             <SDTTimer interval={interval}/>
 
             <SDTButtonGroup>
-                {first && <SDTButton icon="fas circle-play" label="Start de tijd!" onClick={onStartClick}/>}
+                {first && <SDTButton icon="fas circle-play" label="Start" onClick={onStartClick}/>}
                 {!first && (<>
                     {!running && <SDTButton icon="fas play" onClick={onPlayClick}/>}
                     {running && <SDTButton icon="fas pause" onClick={onPauseClick}/>}
                     {!running && <SDTButton icon="fas rotate-left" onClick={onResetClick}/>}
                 </>)}
-                <SDTButton iconAfter="fas circle-right" label="Klok" onClick={() => navigate("/klok")}/>
+                <SDTButton icon="fas clock" label="Klok" onClick={() => navigate("/klok")}/>
             </SDTButtonGroup>
         </SDTContainer>
     );

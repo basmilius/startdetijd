@@ -1,5 +1,6 @@
 import { LatteUi, LatteUiContext } from "@latte-ui/core";
-import { Head } from "@/component/platform";
+import { AnimatePresence } from "framer-motion";
+import { Head, useRouter } from "@/component/platform";
 import { initializeFontAwesome, renderIcon } from "@/logic/font-awesome";
 
 import "../css/latte.scss";
@@ -18,6 +19,8 @@ const latteUiConfig = LatteUiContext.withDefaults({
 });
 
 export default function BApp({Component, pageProps}) {
+    const {pathname} = useRouter();
+
     return (<>
         <Head>
             <meta name="description" content="Het is heel simpel. Het is een timer." key="description"/>
@@ -28,7 +31,9 @@ export default function BApp({Component, pageProps}) {
         </Head>
 
         <LatteUi {...latteUiConfig}>
-            <Component {...pageProps}/>
+            <AnimatePresence exitBeforeEnter initial={false}>
+                <Component key={pathname} {...pageProps}/>
+            </AnimatePresence>
         </LatteUi>
     </>);
 }

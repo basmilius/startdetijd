@@ -34,47 +34,58 @@ export default memo(({interval}: Props) => {
     const showMinutes = !isDesktop || showHours || minutes.filter(n => n > 0).length > 0;
 
     return (
-        <AnimatePresence exitBeforeEnter initial={false}>
-            <motion.div key="digits" className={styles.digits}>
-                {showDays && (<>
+        <motion.div
+            key="digits"
+            animate={{opacity: 1, scale: 1}}
+            exit={{opacity: 0, scale: .75, transition: {type: "tween", duration: .1}}}
+            initial={{opacity: 0, scale: .75}}
+            transition={{type: "spring"}}
+            className={styles.digits}>
+
+            {showDays && (<>
+                <AnimatePresence exitBeforeEnter>
                     <DigitContainer
                         key="days"
                         delayIndex={6}
                         description={"Dagen"}
                         digits={days}/>
+                </AnimatePresence>
 
-                    <AnimatePresence exitBeforeEnter>
-                        <SDTSeparator delayIndex={6}/>
-                    </AnimatePresence>
-                </>)}
+                <AnimatePresence exitBeforeEnter>
+                    <SDTSeparator key="separator-3" delayIndex={6}/>
+                </AnimatePresence>
+            </>)}
 
-                {showHours && (<>
+            {showHours && (<>
+                <AnimatePresence exitBeforeEnter>
                     <DigitContainer
                         key="hours"
                         delayIndex={4}
                         description={"Uren"}
                         digits={hours}/>
+                </AnimatePresence>
 
-                    {isDesktop && (
-                        <AnimatePresence exitBeforeEnter>
-                            <SDTSeparator delayIndex={4}/>
-                        </AnimatePresence>
-                    )}
+                <AnimatePresence exitBeforeEnter>
+                    {isDesktop && <SDTSeparator key="separator-2" delayIndex={4}/>}
+                </AnimatePresence>
 
-                </>)}
+            </>)}
 
-                {showMinutes && (<>
+            {showMinutes && (<>
+                <AnimatePresence exitBeforeEnter>
                     <DigitContainer
                         key="minutes"
                         delayIndex={2}
                         description={"Minuten"}
                         digits={minutes}/>
+                </AnimatePresence>
 
-                    <AnimatePresence exitBeforeEnter>
-                        <SDTSeparator delayIndex={2}/>
-                    </AnimatePresence>
-                </>)}
+                <AnimatePresence exitBeforeEnter>
+                    <SDTSeparator key="separator-1" delayIndex={2}/>
+                </AnimatePresence>
+            </>)}
 
+            <AnimatePresence exitBeforeEnter>
                 <DigitContainer
                     key="seconds"
                     delayIndex={0}
@@ -82,8 +93,9 @@ export default memo(({interval}: Props) => {
                     digits={seconds}
                     hideDescription={!showMinutes}
                     shouldShow={(n, i) => showMinutes || interval >= 10 || n > 0 || i === 1}/>
-            </motion.div>
-        </AnimatePresence>
+            </AnimatePresence>
+
+        </motion.div>
     );
 });
 
