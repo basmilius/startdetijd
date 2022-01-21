@@ -3,14 +3,14 @@
 .buttonGroup {
     position: absolute;
     display: flex;
-    bottom: 5vw;
+    bottom: 10vw;
     align-items: center;
     gap: #{gutter-get(5)};
 }
 
 .button {
     display: flex;
-    height: 63px;
+    height: 66px;
     padding-left: #{gutter-get(7)};
     padding-right: #{gutter-get(7)};
     align-items: center;
@@ -36,7 +36,7 @@
 .buttonIcon {
     height: 1em;
     width: 1em;
-    font-size: 23px;
+    font-size: 22px;
 
     &:first-child {
         margin-left: -#{gutter-get(2)};

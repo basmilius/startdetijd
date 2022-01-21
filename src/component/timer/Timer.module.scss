@@ -10,7 +10,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    letter-spacing: 18px;
+    letter-spacing: 1vw;
 }
 
 .digitsSeparator {
@@ -26,10 +26,12 @@
 
 .digit {
     display: block;
+    margin-right: -1vw;
     color: var(--text);
-    font-size: 8vw;
+    font-size: 12vw;
     font-weight: 700;
     line-height: 1;
+    text-align: center;
 
     @supports (-webkit-text-stroke: .02em var(--text)) {
         color: transparent;
@@ -57,4 +59,24 @@
 .digitMount {
     position: relative;
     display: flex;
+}
+
+@include responsive-down(md) {
+    .digits {
+        display: grid;
+        gap: #{gutter-get(10)} #{gutter-get(6)};
+        grid-template-columns: 1fr auto 1fr;
+    }
+
+    .digit {
+        font-size: 20vw;
+    }
+
+    .digitDescription {
+        font-size: 2vw;
+    }
+
+    .digitsSeparator {
+        font-size: 10vw;
+    }
 }

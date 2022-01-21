@@ -7,6 +7,7 @@ function getCurrentTime(): number {
 }
 
 export default memo(() => {
+    const frameRef = useRef<number>();
     const start = useRef(0);
     const pauseSince = useRef(null);
     const [first, setFirst] = useState(true);
@@ -22,9 +23,7 @@ export default memo(() => {
             start.current = getCurrentTime();
         }
 
-        let frame;
-
-        const onTick = () => {
+        const tick = () => {
             if (!running) {
                 return;
             }
@@ -32,16 +31,13 @@ export default memo(() => {
             const now = getCurrentTime();
 
             setInterval(now - start.current);
-            schedule();
+
+            frameRef.current = requestAnimationFrame(tick);
         };
 
-        const schedule = () => {
-            frame = requestAnimationFrame(onTick);
-        };
+        tick();
 
-        schedule();
-
-        return () => cancelAnimationFrame(frame);
+        return () => cancelAnimationFrame(frameRef.current);
     }, [running]);
 
     const onStartClick = useCallback(() => {
@@ -72,8 +68,6 @@ export default memo(() => {
     return (
         <SDTContainer>
             <SDTTimer interval={interval}/>
-
-            <div style={{height: 90}}/>
 
             <SDTButtonGroup>
                 {first && <SDTButton icon="fas clock" label="Start de tijd!" onClick={onStartClick}/>}
