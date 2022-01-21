@@ -10,11 +10,13 @@
     position: relative;
     display: flex;
     align-items: center;
+    gap: 2vw;
     letter-spacing: 1vw;
 }
 
 .digitsSeparator {
     display: block;
+    margin-right: -1vw;
     color: var(--text-prominent);
     font-size: 5vw;
     animation: separator alternate 1s var(--decelerationCurve) infinite;
