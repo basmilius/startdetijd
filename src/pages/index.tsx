@@ -42,7 +42,7 @@ export default memo(() => {
 
     const onStartClick = useCallback(() => {
         pauseSince.current = -1;
-        start.current = getCurrentTime();
+        start.current = getCurrentTime() - 3595;
         setFirst(false);
         setRunning(true);
     }, []);

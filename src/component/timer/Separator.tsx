@@ -5,10 +5,9 @@ import styles from "./Timer.module.scss";
 
 export default memo(({delayIndex}: Props) => (
     <motion.div
-        animate={{opacity: 1, y: 0}}
+        animate={{opacity: 1, x: 0, transition: {delay: delayIndex * .05, type: "spring"}}}
         exit={{opacity: 0, transition: {type: "tween", duration: .1}}}
-        initial={{opacity: 0, y: -30}}
-        transition={{delay: delayIndex * .05}}
+        initial={{opacity: 0, x: -60}}
         layout
         className={styles.digitsSeparator}/>
 ));

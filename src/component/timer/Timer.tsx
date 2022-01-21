@@ -80,23 +80,25 @@ export default memo(({interval}: Props) => {
                     delayIndex={0}
                     description={"Seconden"}
                     digits={seconds}
+                    hideDescription={!showMinutes}
                     shouldShow={(n, i) => showMinutes || interval >= 10 || n > 0 || i === 1}/>
             </motion.div>
         </AnimatePresence>
     );
 });
 
-const DigitContainer = memo(({delayIndex, description, digits, shouldShow = () => true}: ContainerProps) => (
+const DigitContainer = memo(({delayIndex, description, digits, hideDescription, shouldShow = () => true}: ContainerProps) => (
     <motion.div
         animate={{opacity: 1, x: 0}}
         exit={{opacity: 0}}
-        initial={{opacity: 0, x: "-5em"}}
-        transition={{delay: delayIndex * .05}}
+        initial={{opacity: 0, x: "-6em"}}
+        transition={{delay: delayIndex * .1, type: "spring"}}
         layout
         className={styles.digitContainer}>
 
         <motion.div
-            className={styles.digitMount}>
+            className={styles.digitMount}
+            layout>
             {digits.map((digit, index) => shouldShow(digit, index) && (
                 <AnimatePresence key={index} exitBeforeEnter initial={false}>
                     <SDTDigit
@@ -107,15 +109,17 @@ const DigitContainer = memo(({delayIndex, description, digits, shouldShow = () =
             ))}
         </motion.div>
 
-        <motion.div
-            animate={{opacity: 1, y: 0}}
-            exit={{opacity: 0}}
-            initial={{opacity: 0, y: -90}}
-            transition={{delay: delayIndex * .05}}
-            layout
-            className={styles.digitDescription}>
-            {description}
-        </motion.div>
+        {!hideDescription && (
+            <motion.div
+                animate={{opacity: 1, y: 0}}
+                exit={{opacity: 0}}
+                initial={{opacity: 0, y: -90}}
+                transition={{delay: delayIndex * .05}}
+                layout
+                className={styles.digitDescription}>
+                {description}
+            </motion.div>
+        )}
     </motion.div>
 ));
 
@@ -127,5 +131,6 @@ interface ContainerProps {
     delayIndex: number;
     description: string;
     digits: number[];
+    hideDescription?: boolean;
     shouldShow?: (value: number, index: number) => boolean;
 }

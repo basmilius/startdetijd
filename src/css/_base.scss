@@ -2,9 +2,10 @@
 
 body {
     --background: #072227;
-    --button: #35858B;
-    --text: #4FBDBA;
-    --text-prominent: #AEFEFF;
+    --button: #35858b;
+    --text: #4fbdba;
+    --text-prominent: #aefeff;
+    --text-prominent-soft: rgb(174 254 255 / .5);
 
     background: var(--background);
     color: var(--text);
