@@ -1,10 +1,13 @@
 import { LatteUi, LatteUiContext } from "@latte-ui/core";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence as _AnimatePresence, AnimatePresenceProps } from "framer-motion";
+import { FC, PropsWithChildren } from "react";
 import { Head, useRouter } from "@/component/platform";
 import { initializeFontAwesome, renderIcon } from "@/logic/font-awesome";
 
 import "../css/latte.scss";
 import "../css/index.scss";
+
+const AnimatePresence = _AnimatePresence as FC<PropsWithChildren<AnimatePresenceProps>>;
 
 initializeFontAwesome();
 

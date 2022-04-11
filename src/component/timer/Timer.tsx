@@ -1,9 +1,11 @@
 import { useBreakpoints } from "@latte-ui/core";
-import { AnimatePresence, motion } from "framer-motion";
-import { memo, useMemo } from "react";
+import { AnimatePresence as _AnimatePresence, AnimatePresenceProps, motion } from "framer-motion";
+import { FC, memo, PropsWithChildren, useMemo } from "react";
 import { SDTDigit, SDTSeparator } from "@/component/timer/index";
 
 import styles from "./Timer.module.scss";
+
+const AnimatePresence = _AnimatePresence as FC<PropsWithChildren<AnimatePresenceProps>>;
 
 export default memo(({interval}: Props) => {
     const {isUp} = useBreakpoints();

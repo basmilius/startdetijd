@@ -1,7 +1,9 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { Children, cloneElement, memo, PropsWithChildren, ReactElement } from "react";
+import { AnimatePresence as _AnimatePresence, AnimatePresenceProps, motion } from "framer-motion";
+import { Children, cloneElement, FC, memo, PropsWithChildren, ReactElement } from "react";
 
 import styles from "./Button.module.scss";
+
+const AnimatePresence = _AnimatePresence as FC<PropsWithChildren<AnimatePresenceProps>>;
 
 export default memo(({children}: PropsWithChildren<{}>) => (
     <motion.div

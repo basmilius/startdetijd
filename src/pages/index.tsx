@@ -74,13 +74,13 @@ export default memo(() => {
             <SDTTimer interval={interval}/>
 
             <SDTButtonGroup>
-                {first && <SDTButton icon="fas circle-play" label="Start" onClick={onStartClick}/>}
+                {first && <SDTButton key="start" icon="fas circle-play" label="Start" onClick={onStartClick}/>}
                 {!first && (<>
-                    {!running && <SDTButton icon="fas play" onClick={onPlayClick}/>}
-                    {running && <SDTButton icon="fas pause" onClick={onPauseClick}/>}
-                    {!running && <SDTButton icon="fas rotate-left" onClick={onResetClick}/>}
+                    {!running && <SDTButton key="play" icon="fas play" onClick={onPlayClick}/>}
+                    {running && <SDTButton key="pause" icon="fas pause" onClick={onPauseClick}/>}
+                    {!running && <SDTButton key="reset" icon="fas rotate-left" onClick={onResetClick}/>}
                 </>)}
-                <SDTButton icon="fas clock" label="Klok" onClick={() => navigate("/klok")}/>
+                <SDTButton key="clock" icon="fas clock" label="Klok" onClick={() => navigate("/klok")}/>
             </SDTButtonGroup>
         </SDTContainer>
     );

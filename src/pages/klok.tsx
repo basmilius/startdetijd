@@ -36,7 +36,7 @@ export default memo(() => {
             <SDTTimer interval={interval}/>
 
             <SDTButtonGroup>
-                <SDTButton icon="fas stopwatch" label="Stopwatch" onClick={() => navigate("/")}/>
+                <SDTButton key="stopwatch" icon="fas stopwatch" label="Stopwatch" onClick={() => navigate("/")}/>
             </SDTButtonGroup>
         </SDTContainer>
     );
